@@ -24,6 +24,7 @@ bash -c "echo extension=apcu.so > /etc/php/7.0/apache2/conf.d/20-apcu.ini"
 
 sed -i 's/user = www-data/user = ubuntu/g' /etc/php/7.0/fpm/pool.d/www.conf
 sed -i 's/group = www-data/group = ubuntu/g' /etc/php/7.0/fpm/pool.d/www.conf
+sed -i 's/listen.owner = www-data/listen.owner = ubuntu/g' /etc/php/7.0/fpm/pool.d/www.conf
 sed -i 's/pm = dynamic/pm = ondemand/g' /etc/php/7.0/fpm/pool.d/www.conf
 
 sleep 5
@@ -31,7 +32,7 @@ sleep 5
 
 wget https://raw.githubusercontent.com/SuperNami/c9-nginx-php7/master/drupal1.conf -O /etc/nginx/sites-available/drupal.conf
 #wget https://raw.githubusercontent.com/SuperNami/c9-nginx-php7/master/drupal2.conf -O /etc/nginx/sites-available/drupal.conf
-ln -s /etc/nginx/sites-available/drupal8.conf /etc/nginx/sites-enabled/drupal8.conf
+ln -s /etc/nginx/sites-available/drupal.conf /etc/nginx/sites-enabled/drupal.conf
 
 wget https://raw.githubusercontent.com/SuperNami/c9-nginx-php7/master/nginx.conf -O /etc/nginx/nginx.conf
 
@@ -58,4 +59,7 @@ service mysql status
 # this command stops the script with user input where you have to hit [enter] key
 pecl install apcu -y
 
+# restart workspace for filesystem paths to change to "/home/ubuntu/workspace"
 # curl -L https://raw.githubusercontent.com/SuperNami/c9-nginx-php7/master/script.sh | bash
+
+echo "export PATH=$PATH:/home/ubuntu/workspace/vendor/bin" >> /home/ubuntu/.bashrc
