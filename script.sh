@@ -36,7 +36,7 @@ ln -s /etc/nginx/sites-available/drupal.conf /etc/nginx/sites-enabled/drupal.con
 wget https://raw.githubusercontent.com/SuperNami/c9-nginx-php7/master/nginx.conf -O /etc/nginx/nginx.conf
 
 # helper utility
-wget https://raw.githubusercontent.com/GabrielGil/c9-lemp/master/lemp -O /usr/bin/lemp
+wget https://raw.githubusercontent.com/SuperNami/c9-nginx-php7/master/lemp -O /usr/bin/lemp
 chmod 755 /usr/bin/lemp
 
 # update Composer
