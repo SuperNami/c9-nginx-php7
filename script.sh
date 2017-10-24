@@ -26,6 +26,9 @@ sed -i 's/user = www-data/user = ubuntu/g' /etc/php/7.1/fpm/pool.d/www.conf
 sed -i 's/group = www-data/group = ubuntu/g' /etc/php/7.1/fpm/pool.d/www.conf
 sed -i 's/listen.owner = www-data/listen.owner = ubuntu/g' /etc/php/7.1/fpm/pool.d/www.conf
 sed -i 's/pm = dynamic/pm = ondemand/g' /etc/php/7.1/fpm/pool.d/www.conf
+sed -i 's/;request_terminate_timeout = 0/request_terminate_timeout = 300/g' /etc/php/7.1/fpm/pool.d/www.conf
+
+sed -i 's/max_execution_time = 30/max_execution_time = 300/g' /etc/php/7.1/fpm/php.ini
 
 sleep 5
 #wget https://raw.githubusercontent.com/wodby/drupal-nginx/master/1.10/fastcgi_params -O /etc/nginx/fastcgi_params
